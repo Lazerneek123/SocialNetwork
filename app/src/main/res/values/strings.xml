@@ -7,16 +7,16 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_information_app">Information</string>
 
-    <string name="menu_friends">Friends (Update)</string>
+    <string name="menu_friends">Friends</string>
     <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_slideshow">Update</string>
 
     <string name="menu_information_app">Information</string>
     <string name="todo" />
     <string name="search">Search</string>
 
     <string name="name1">Maks Rens</string>
-    <string name="name2">Sara Derby</string>
+    <string name="name2">Update</string>
     <string name="name3">Mark Twelve</string>
     <string name="name4">Nick Tiger</string>
     <string name="name5">Lora Brown</string>
@@ -24,4 +24,5 @@
     <string name="name7">Susan Garbel</string>
 
     <string name="information_app">Simple app social network (v.1.0)</string>
+    <string name="todo1">TODO</string>
 </resources>

@@ -12,37 +12,8 @@
         android:id="@+id/groupNavigationAdmin"
         android:visible="true">
         <item
-            android:id="@+id/nav_friend1"
-            android:icon="@android:drawable/btn_star_big_on"
-            android:title="@string/name1" />
-        <item
-            android:id="@+id/nav_friend2"
+            android:id="@+id/update"
             android:icon="@android:drawable/btn_star_big_on"
             android:title="@string/name2" />
-    </group>
-    <group
-        android:id="@+id/groupNavigationUser"
-        android:checkableBehavior="single"
-        android:visible="true">
-        <item
-            android:id="@+id/nav_friend3"
-            android:icon="@android:drawable/alert_dark_frame"
-            android:title="@string/name3" />
-        <item
-            android:id="@+id/nav_friend4"
-            android:icon="@android:drawable/alert_dark_frame"
-            android:title="@string/name4" />
-        <item
-            android:id="@+id/nav_friend5"
-            android:icon="@android:drawable/alert_dark_frame"
-            android:title="@string/name5" />
-        <item
-            android:id="@+id/nav_friend6"
-            android:icon="@android:drawable/alert_dark_frame"
-            android:title="@string/name6" />
-        <item
-            android:id="@+id/nav_friend7"
-            android:icon="@android:drawable/alert_dark_frame"
-            android:title="@string/name7" />
     </group>
 </menu>

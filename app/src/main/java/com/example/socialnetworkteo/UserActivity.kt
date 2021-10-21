@@ -24,15 +24,16 @@ class UserActivity : AppCompatActivity() {
         val textStatus: TextView = findViewById(R.id.useTitle)
         val userTitle: TextView = findViewById(R.id.detailsTextAboutMe)
         val userImage: ImageView = findViewById(R.id.userImage)
-        val id = intent.extras?.getInt("id")
+        val id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
+
 
         viewModel.userData.observe(this, {
 
-            userName.text = it.userList[id!!].name.value
-            userStatus.text = "Post: " + it.userList[id].post.value + " | Age: " + it.userList[id].age.value
-            userImage.setImageResource(it.userList[id].photo.value!!)
-            textStatus.text = "Hobby: " + it.userList[id].hobby.value + " | Email: " + it.userList[id].email.value
-            userTitle.text = it.userList[id].description.value
+            userName.text = it.userList.value!![id].name
+            userStatus.text = "Post: " + it.userList.value!![id].post + " | Age: " + it.userList.value!![id].age
+            userImage.setImageResource(it.userList.value!![id].photo)
+            textStatus.text = "Hobby: " + it.userList.value!![id].hobby + " | Email: " + it.userList.value!![id].email
+            userTitle.text = it.userList.value!![id].description
         })
     }
 }

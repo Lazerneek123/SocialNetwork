@@ -19,13 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/darkLight"
+        android:background="@color/light"
         android:fitsSystemWindows="true"
-        android:rotationY="8"
-        android:translationX="@dimen/activity_horizontal_margin"
-        android:verticalScrollbarPosition="right"
+        android:verticalScrollbarPosition="left"
         app:headerLayout="@layout/nav_header_main"
         app:itemIconTint="@color/purple_200"
         app:itemTextColor="@color/white"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer">
+
+    </com.google.android.material.navigation.NavigationView>
+
 </androidx.drawerlayout.widget.DrawerLayout>

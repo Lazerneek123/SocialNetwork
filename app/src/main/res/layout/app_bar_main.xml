@@ -22,7 +22,7 @@
 
     <include
         layout="@layout/content_main"
-        android:background="@color/darkLight"
-        android:foregroundTint="@color/darkLight" />
+        android:background="@color/light"
+        android:foregroundTint="@color/light" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

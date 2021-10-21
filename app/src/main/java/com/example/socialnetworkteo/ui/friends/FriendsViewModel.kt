@@ -8,7 +8,7 @@ import com.example.socialnetworkteo.model.UserData
 class FriendsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Select a friend for accurate information!"
+        value = "Select a friend"
     }
     val text: LiveData<String> = _text
 

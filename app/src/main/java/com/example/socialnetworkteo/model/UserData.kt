@@ -1,5 +1,7 @@
 package com.example.socialnetworkteo.model
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.socialnetworkteo.R
 
 class UserData {
@@ -7,7 +9,10 @@ class UserData {
     private val onlineStatus = listOf((1..59).random().toString() + " min ago", "Online",
         (1..23).random().toString() + " hours ago", "Yesterday", (1..11).random().toString() + " month ago")
 
-    val userList : List<User>
+    private var _userList = MutableLiveData<List<User>>().apply {
+        value = listOf()
+    }
+    var userList: LiveData<List<User>> = _userList
 
     init {
         val user1 = User(
@@ -61,6 +66,6 @@ class UserData {
                     "There should be a description of the character! There should be a description of the character!"
         )
 
-        userList = listOf(user1, user2, user3, user4, user5, user6, user7)
+        _userList.value = listOf(user1, user2, user3, user4, user5, user6, user7)
     }
 }
