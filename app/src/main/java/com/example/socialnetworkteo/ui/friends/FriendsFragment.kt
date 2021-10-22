@@ -32,21 +32,21 @@ class FriendsFragment : Fragment() {
 
         val root: View = inflater.inflate(R.layout.fragment_friends, null)
         _binding = FragmentFriendsBinding.bind(root)
-        val user1: LinearLayout = _binding!!.layout1
-        val user2: LinearLayout = _binding!!.layout2
-        val user3: LinearLayout = _binding!!.layout3
-        val user4: LinearLayout = _binding!!.layout4
-        val user5: LinearLayout = _binding!!.layout5
-        val user6: LinearLayout = _binding!!.layout6
-        val user7: LinearLayout = _binding!!.layout7
+        val linkLayoutUser1: LinearLayout = _binding!!.layout1
+        val linkLayoutUser2: LinearLayout = _binding!!.layout2
+        val linkLayoutUser3: LinearLayout = _binding!!.layout3
+        val linkLayoutUser4: LinearLayout = _binding!!.layout4
+        val linkLayoutUser5: LinearLayout = _binding!!.layout5
+        val linkLayoutUser6: LinearLayout = _binding!!.layout6
+        val linkLayoutUser7: LinearLayout = _binding!!.layout7
 
-        user1.setOnClickListener { openFriend(0) }
-        user2.setOnClickListener { openFriend(1) }
-        user3.setOnClickListener { openFriend(2) }
-        user4.setOnClickListener { openFriend(3) }
-        user5.setOnClickListener { openFriend(4) }
-        user6.setOnClickListener { openFriend(5) }
-        user7.setOnClickListener { openFriend(6) }
+        linkLayoutUser1.setOnClickListener { openFriend(0) }
+        linkLayoutUser2.setOnClickListener { openFriend(1) }
+        linkLayoutUser3.setOnClickListener { openFriend(2) }
+        linkLayoutUser4.setOnClickListener { openFriend(3) }
+        linkLayoutUser5.setOnClickListener { openFriend(4) }
+        linkLayoutUser6.setOnClickListener { openFriend(5) }
+        linkLayoutUser7.setOnClickListener { openFriend(6) }
 
         val friend1Image : ImageView = _binding!!.userImage1
         val nameFriend1 : TextView = _binding!!.userName1
@@ -55,7 +55,7 @@ class FriendsFragment : Fragment() {
             nameFriend1.text = it.userList.value!![0].name
             onlineStatusFriend1.text = it.userList.value!![0].online
             friend1Image.setImageResource(it.userList.value!![0].photo)
-            0.setColor(onlineStatusFriend1, it)
+            onlineStatusFriend1.setColor(0, it)
         })
 
         val friend2Image : ImageView = _binding!!.userImage2
@@ -65,7 +65,7 @@ class FriendsFragment : Fragment() {
             nameFriend2.text = it.userList.value!![1].name
             onlineStatusFriend2.text = it.userList.value!![1].online
             friend2Image.setImageResource(it.userList.value!![1].photo)
-            1.setColor(onlineStatusFriend2, it)
+            onlineStatusFriend2.setColor(1, it)
         })
 
 
@@ -76,7 +76,7 @@ class FriendsFragment : Fragment() {
             nameFriend3.text = it.userList.value!![2].name
             onlineStatusFriend3.text = it.userList.value!![2].online
             friend3Image.setImageResource(it.userList.value!![2].photo)
-            2.setColor(onlineStatusFriend3, it)
+            onlineStatusFriend3.setColor(2, it)
         })
 
         val friend4Image : ImageView = _binding!!.userImage4
@@ -86,7 +86,7 @@ class FriendsFragment : Fragment() {
             nameFriend4.text = it.userList.value!![3].name
             onlineStatusFriend4.text = it.userList.value!![3].online
             friend4Image.setImageResource(it.userList.value!![3].photo)
-            3.setColor(onlineStatusFriend4, it)
+            onlineStatusFriend4.setColor(3, it)
         })
 
         val friend5Image : ImageView = _binding!!.userImage5
@@ -96,7 +96,7 @@ class FriendsFragment : Fragment() {
             nameFriend5.text = it.userList.value!![4].name
             onlineStatusFriend5.text = it.userList.value!![4].online
             friend5Image.setImageResource(it.userList.value!![4].photo)
-            4.setColor(onlineStatusFriend5, it)
+            onlineStatusFriend5.setColor(4, it)
         })
 
         val friend6Image : ImageView = _binding!!.userImage6
@@ -106,7 +106,7 @@ class FriendsFragment : Fragment() {
             nameFriend6.text = it.userList.value!![5].name
             onlineStatusFriend6.text = it.userList.value!![5].online
             friend6Image.setImageResource(it.userList.value!![5].photo)
-            5.setColor(onlineStatusFriend6, it)
+            onlineStatusFriend6.setColor(5, it)
         })
 
         val friend7Image : ImageView = _binding!!.userImage7
@@ -116,14 +116,11 @@ class FriendsFragment : Fragment() {
             nameFriend7.text = it.userList.value!![6].name
             onlineStatusFriend7.text = it.userList.value!![6].online
             friend7Image.setImageResource(it.userList.value!![6].photo)
-            6.setColor(onlineStatusFriend7, it)
+            onlineStatusFriend7.setColor(6, it)
         })
 
         val textView: TextView = _binding!!.textFriends
-        friendsViewModel.text.observe(viewLifecycleOwner, {
-            textView.text = it
-        })
-
+        textView.text = resources.getString(R.string.friends_fragment_inscription)
 
         return root
     }
@@ -133,9 +130,9 @@ class FriendsFragment : Fragment() {
     }
 
 
-    private fun Int.setColor(view: TextView, it: UserData) {
-        if(it.userList.value!![this].online != "Online"){
-            view.setTextColor(Color.rgb(255, 0, 10))
+    private fun TextView.setColor(index: Int, it: UserData) {
+        if(it.userList.value!![index].online != "Online"){
+            this.setTextColor(Color.rgb(255, 0, 10))
         }
     }
 

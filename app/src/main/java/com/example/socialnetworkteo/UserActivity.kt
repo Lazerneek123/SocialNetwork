@@ -21,19 +21,22 @@ class UserActivity : AppCompatActivity() {
 
         val userName: TextView = findViewById(R.id.userName)
         val userStatus: TextView = findViewById(R.id.userStatus)
-        val textStatus: TextView = findViewById(R.id.useTitle)
-        val userTitle: TextView = findViewById(R.id.detailsTextAboutMe)
+        val userTitle: TextView = findViewById(R.id.userTitle)
+        val userDetailsTextAbout: TextView = findViewById(R.id.detailsTextAbout)
         val userImage: ImageView = findViewById(R.id.userImage)
         val id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
 
 
         viewModel.userData.observe(this, {
-
             userName.text = it.userList.value!![id].name
-            userStatus.text = "Post: " + it.userList.value!![id].post + " | Age: " + it.userList.value!![id].age
+            userStatus.text = resources.getString(R.string.text_post) +
+                    it.userList.value!![id].post + resources.getString(R.string.text_age) +
+                    it.userList.value!![id].age
             userImage.setImageResource(it.userList.value!![id].photo)
-            textStatus.text = "Hobby: " + it.userList.value!![id].hobby + " | Email: " + it.userList.value!![id].email
-            userTitle.text = it.userList.value!![id].description
+            userTitle.text = resources.getString(R.string.text_hobby) +
+                    it.userList.value!![id].hobby + resources.getString(R.string.text_email) +
+                    it.userList.value!![id].email
+            userDetailsTextAbout.text = it.userList.value!![id].description
         })
     }
 }

@@ -6,6 +6,12 @@
     <string name="nav_header_subtitle">random@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_information_app">Information</string>
+    <string name="friends_fragment_inscription">Select a friend</string>
+
+    <string name="text_post">Post: </string>
+    <string name="text_age"> | Age: </string>
+    <string name="text_hobby">Hobby: </string>
+    <string name="text_email"> | Email: </string>
 
     <string name="menu_friends">Friends</string>
     <string name="menu_gallery">Gallery</string>
