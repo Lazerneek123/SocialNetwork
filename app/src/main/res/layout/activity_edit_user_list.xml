@@ -1,56 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light"
-    tools:context=".ui.friends.FriendsFragment">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_friends"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text=""
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.10" />
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:background="@color/light"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/edit_text"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="60dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_edit"
+            tools:ignore="NestedWeights" />
+
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/layoutEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/light"
             android:orientation="vertical">
 
+
             <LinearLayout
-                android:id="@+id/layout0"
+                android:id="@+id/layoutEdit0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage0"
+                    android:id="@+id/editImage0"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
 
 
                 <LinearLayout
@@ -61,20 +77,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName0"
+                        android:id="@+id/userEditName0"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textSize="35sp"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:id="@+id/userOnline0"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -82,19 +89,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout1"
+                android:id="@+id/layoutEdit1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage1"
+                    android:id="@+id/editImage1"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
 
 
                 <LinearLayout
@@ -105,21 +112,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName1"
+                        android:id="@+id/userEditName1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/userOnline1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -127,19 +124,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout2"
+                android:id="@+id/layoutEdit2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage2"
+                    android:id="@+id/editImage2"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -149,21 +147,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName2"
+                        android:id="@+id/userEditName2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/userOnline2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -171,19 +159,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout3"
+                android:id="@+id/layoutEdit3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage3"
+                    android:id="@+id/editImage3"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -193,66 +182,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName3"
+                        android:id="@+id/userEditName3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/userOnline3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/layout4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage4"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
-                    app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/userName4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:textSize="35sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/userOnline4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -260,19 +194,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout5"
+                android:id="@+id/layoutEdit4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage5"
+                    android:id="@+id/editImage4"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -282,21 +217,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName5"
+                        android:id="@+id/userEditName4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
-
-                    <TextView
-                        android:id="@+id/userOnline5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -304,19 +229,20 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout6"
+                android:id="@+id/layoutEdit5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/userImage6"
+                    android:id="@+id/editImage5"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    app:srcCompat="@drawable/icon_my"
+                    app:civ_border_color="@color/black"
                     app:civ_border_width="2dp"
-                    app:civ_border_color="@color/black"/>
+                    app:srcCompat="@drawable/icon_my" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -326,21 +252,46 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userName6"
+                        android:id="@+id/userEditName5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="35sp"
-                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutEdit6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/editImage6"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    app:civ_border_color="@color/black"
+                    app:civ_border_width="2dp"
+                    app:srcCompat="@drawable/icon_my" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/userOnline6"
+                        android:id="@+id/userEditName6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:textColor="@android:color/holo_green_light"
-                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -351,4 +302,4 @@
 
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -11,21 +11,4 @@
         android:label="@string/menu_friends"
         tools:layout="@layout/fragment_friends" />
 
-    <fragment
-        android:id="@+id/nav_information_app"
-        android:name="com.example.socialnetworkteo.ui.friends.FriendsFragment"
-        android:label="@string/action_information_app"
-        tools:layout="@layout/fragment_information_app" />
-
-    <fragment
-        android:id="@+id/update"
-        android:name="com.example.socialnetworkteo.ui.friends.FriendsFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
-        android:id="@+id/nav_information_app1"
-        android:name="com.example.socialnetworkteo.ui.friends.FriendsFragment"
-        android:label="@string/menu_information_app"
-        tools:layout="@layout/fragment_user_admin" />
 </navigation>

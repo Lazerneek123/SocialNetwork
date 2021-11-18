@@ -21,14 +21,31 @@
     <string name="todo" />
     <string name="search">Search</string>
 
-    <string name="name1">Maks Rens</string>
-    <string name="name2">Update</string>
-    <string name="name3">Mark Twelve</string>
-    <string name="name4">Nick Tiger</string>
-    <string name="name5">Lora Brown</string>
-    <string name="name6">Semi Worner</string>
-    <string name="name7">Susan Garbel</string>
+    <string name="name_single_Item1">Edit</string>
+    <string name="name_single_Item2">Update</string>
 
     <string name="information_app">Simple app social network (v.1.0)</string>
     <string name="todo1">TODO</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="action_settings">Settings</string>
+    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
+    <string name="start_level">Level 1</string>
+
+
+    <string name="edit_text">Edit a friends</string>
+    <string name="update_text">Update!</string>
+
+
+    <string name="interstitial_ad_unit_id">YOUR_INTERSTITIAL_AD_UNIT_ID</string>
+    <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_edit_user">EditUserActivity</string>
+    <string name="next_level">Next Level</string>
 </resources>
