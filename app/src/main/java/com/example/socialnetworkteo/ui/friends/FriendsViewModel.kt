@@ -7,6 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import com.example.socialnetworkteo.database.UserDatabase
 import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.models.UserData
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FriendsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -20,7 +23,11 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
     fun fillUpDatabase() {
         if (database.isEmpty() == null) {
             for (user in usersData.userList.value!!) {
-                database.insert(user)
+                database.run {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        insert(user)
+                    }
+                }
             }
         }
     }

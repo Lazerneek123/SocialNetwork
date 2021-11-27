@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.ui.friends.FriendsViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class EditListUserActivity : AppCompatActivity() {
     private lateinit var viewModel: FriendsViewModel
@@ -18,8 +21,10 @@ class EditListUserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_user_list)
         viewModel =
             ViewModelProvider(this)[FriendsViewModel::class.java]
+
         viewModel.fillUpDatabase()
         viewModel.loadUsersData()
+
 
         for (id in 0..(viewModel.userLiveData.value!!.size - 1)) {
             viewModel.userLiveData.observe(this, {

@@ -1,18 +1,20 @@
 package com.example.socialnetworkteo.database
 
 import androidx.room.*
+import com.example.socialnetworkteo.activities.EditUserActivity
 import com.example.socialnetworkteo.models.User
+import kotlinx.coroutines.Deferred
 
 @Dao
 interface UserDatabaseDao {
     @Insert(entity = User::class, onConflict = OnConflictStrategy.REPLACE)
-    fun insert(user: User)
+    suspend fun insert(user: User)
 
     @Update
-    fun update(user: User)
+    suspend fun update(user: User)
 
     @Query("SELECT * from users_information WHERE id = :key")
-    fun get(key: Int): User?
+    fun getId(key: Int): User?
 
     @Query("SELECT * from users_information")
     fun getAll(): List<User>
@@ -21,5 +23,5 @@ interface UserDatabaseDao {
     fun isEmpty(): User?
 
     @Delete
-    fun delete(user: User)
+    suspend fun delete(user: User)
 }

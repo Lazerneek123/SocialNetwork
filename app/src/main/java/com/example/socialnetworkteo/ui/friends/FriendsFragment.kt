@@ -15,6 +15,9 @@ import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.activities.MainActivity
 import com.example.socialnetworkteo.databinding.FragmentFriendsBinding
 import com.example.socialnetworkteo.models.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FriendsFragment : Fragment() {
 
@@ -29,6 +32,7 @@ class FriendsFragment : Fragment() {
     ): View {
         viewModel =
             ViewModelProvider(this)[FriendsViewModel::class.java]
+
         viewModel.fillUpDatabase()
         viewModel.loadUsersData()
 

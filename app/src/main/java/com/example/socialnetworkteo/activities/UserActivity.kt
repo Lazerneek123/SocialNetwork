@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.ui.friends.FriendsViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class UserActivity : AppCompatActivity() {
     private lateinit var viewModel: FriendsViewModel
@@ -18,8 +21,10 @@ class UserActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user)
 
         viewModel = ViewModelProvider(this)[FriendsViewModel::class.java]
+
         viewModel.fillUpDatabase()
         viewModel.loadUsersData()
+
 
         val id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
         viewModel.userLiveData.observe(this, {
