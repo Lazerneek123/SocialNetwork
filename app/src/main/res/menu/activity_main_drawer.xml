@@ -12,12 +12,7 @@
         android:id="@+id/groupNavigationAdmin"
         android:checkableBehavior="single"
         android:visible="true">
-        <item
-            android:id="@+id/edit"
-            android:checkable="true"
-            android:icon="@android:drawable/ic_menu_edit"
-            android:onClick="editOpen"
-            android:title="@string/name_single_Item1" />
+
         <item
             android:id="@+id/update"
             android:icon="@android:drawable/dialog_holo_dark_frame"

@@ -10,5 +10,6 @@
     <color name="textName">#FFFFFFFF</color>
     <color name="dark">#FF000000</color> #0B0711
     <color name="light">#FFFFFFF9</color>  #0B0A1B
+    <color name="light_gray">#B8B7B6</color>
     <color name="dark_blue">#0B0711</color>
 </resources>

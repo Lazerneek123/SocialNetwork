@@ -8,10 +8,10 @@
     <string name="action_information_app">Information</string>
     <string name="friends_fragment_inscription">Select a friend</string>
 
-    <string name="text_post">Post: </string>
-    <string name="text_age"> | Age: </string>
-    <string name="text_hobby">Hobby: </string>
-    <string name="text_email"> | Email: </string>
+    <string name="text_post">Post</string>
+    <string name="text_age">Age</string>
+    <string name="text_hobby">Hobby</string>
+    <string name="text_email">Email</string>
 
     <string name="menu_friends">Friends</string>
     <string name="menu_gallery">Gallery</string>
@@ -24,7 +24,7 @@
     <string name="name_single_Item1">Edit</string>
     <string name="name_single_Item2">Update</string>
 
-    <string name="information_app">Simple app social network (v.1.0)</string>
+    <string name="information_app">Simple app social network (v.1.12)</string>
     <string name="todo1">TODO</string>
 
     <string name="prompt_email">Email</string>
@@ -41,6 +41,7 @@
 
 
     <string name="edit_text">Edit a friends</string>
+    <string name="edit_button">Edit</string>
     <string name="update_text">Update!</string>
 
 

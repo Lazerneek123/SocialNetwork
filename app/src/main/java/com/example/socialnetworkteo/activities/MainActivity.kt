@@ -57,13 +57,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun editOpen(item: MenuItem) {
-        val intent = Intent(this, EditListUserActivity::class.java)
-        intent.putExtra(EXTRA_MESSAGE, 0)
-        startActivity(intent)
-        recreate()
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return true
