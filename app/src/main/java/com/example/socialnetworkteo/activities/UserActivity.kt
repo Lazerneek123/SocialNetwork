@@ -10,23 +10,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.ui.friends.FriendsViewModel
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 class UserActivity : AppCompatActivity() {
     private lateinit var viewModel: FriendsViewModel
     private var id: Int = 0
 
+    @DelicateCoroutinesApi
     @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
         viewModel = ViewModelProvider(this)[FriendsViewModel::class.java]
-
-        viewModel.fillUpDatabase()
-        viewModel.loadUsersData()
-
+        viewModel.getAllUsers()
 
         id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
+
         viewModel.userLiveData.observe(this, {
             findViewById<TextView>(R.id.userName).text = it[id].name
             findViewById<TextView>(R.id.userPost).text = it[id].post

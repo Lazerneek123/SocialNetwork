@@ -72,7 +72,7 @@
                         android:id="@+id/userOnline0"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -111,13 +111,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -155,13 +155,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -199,13 +199,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -244,13 +244,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -288,13 +288,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -332,13 +332,13 @@
                         android:textSize="35sp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="@string/app_name" />
+                        android:text="" />
 
                     <TextView
                         android:id="@+id/userOnline6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/app_name"
+                        android:text=""
                         android:textColor="@android:color/holo_green_light"
                         android:textSize="20sp"
                         android:textStyle="bold" />

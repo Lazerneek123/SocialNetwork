@@ -1,14 +1,14 @@
 package com.example.socialnetworkteo.ui.friends
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.socialnetworkteo.database.UserDatabase
 import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.models.UserData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FriendsViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,19 +20,20 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
 
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
-    fun fillUpDatabase() {
-        if (database.isEmpty() == null) {
-            for (user in usersData.userList.value!!) {
-                database.run {
-                    CoroutineScope(Dispatchers.IO).launch {
+    @SuppressLint("NullSafeMutableLiveData")
+    fun getAllUsers() {
+        database.run {
+            viewModelScope.launch {
+                if (listEmpty() == null) {
+                    for (user in usersData.userList.value!!) {
                         insert(user)
                     }
                 }
+                _userLiveData.value = getAllUsers()
+            }
+            viewModelScope.launch {
+                _userLiveData.value = getAllUsers()
             }
         }
-    }
-
-    fun loadUsersData() {
-        _userLiveData.value = database.getAll()
     }
 }
