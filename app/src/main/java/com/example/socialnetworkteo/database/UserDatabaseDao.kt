@@ -17,6 +17,9 @@ interface UserDatabaseDao {
     @Query("SELECT * FROM users_information")
     suspend fun getAllUsers(): List<User>
 
+    @Query("SELECT COUNT(*) FROM users_information LIMIT 1")
+    suspend fun getSize(): Int?
+
     @Query("SELECT * from users_information LIMIT 1")
     suspend fun listEmpty(): User?
 

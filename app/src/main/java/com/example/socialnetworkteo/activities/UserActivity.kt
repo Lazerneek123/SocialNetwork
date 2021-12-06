@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.ui.friends.FriendsViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
 
 class UserActivity : AppCompatActivity() {
     private lateinit var viewModel: FriendsViewModel
     private var id: Int = 0
 
-    @DelicateCoroutinesApi
     @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

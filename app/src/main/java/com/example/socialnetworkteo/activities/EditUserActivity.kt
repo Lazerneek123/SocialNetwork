@@ -6,20 +6,17 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.lifecycleScope
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.models.EditUserViewModel
 import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.models.UserData
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class EditUserActivity : AppCompatActivity() {
     private lateinit var viewModel: EditUserViewModel
 
-    @DelicateCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user)
@@ -27,7 +24,7 @@ class EditUserActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[EditUserViewModel::class.java]
 
         val id = intent.extras?.getInt("id")!!.toInt()
-        viewModel.viewModelScope.launch { viewModel.loadUserData(id) }
+        lifecycleScope.launch { viewModel.loadUserData(id) }
 
         val userData = UserData()
         val friend1Image: ImageView = findViewById(R.id.userEditImage)
@@ -59,7 +56,6 @@ class EditUserActivity : AppCompatActivity() {
 
     }
 
-    @DelicateCoroutinesApi
     private fun updateUserInfo() {
         val newUserName = findViewById<EditText>(R.id.textEditUserName).text.toString()
         val newUserPost = findViewById<EditText>(R.id.textEditUserPost).text.toString()
@@ -81,7 +77,7 @@ class EditUserActivity : AppCompatActivity() {
             newDescription
         )
 
-        viewModel.viewModelScope.launch(Dispatchers.IO) {
+        lifecycleScope.launch(Dispatchers.IO) {
             viewModel.updateUserInfo(user)
         }
     }
