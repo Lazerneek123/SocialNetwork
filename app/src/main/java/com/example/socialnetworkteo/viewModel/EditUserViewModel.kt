@@ -1,12 +1,12 @@
-package com.example.socialnetworkteo.models
+package com.example.socialnetworkteo.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.socialnetworkteo.database.UserDatabase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.socialnetworkteo.models.User
 import kotlinx.coroutines.launch
 
 class EditUserViewModel(application: Application) : AndroidViewModel(application) {
@@ -15,13 +15,13 @@ class EditUserViewModel(application: Application) : AndroidViewModel(application
 
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
-    suspend fun loadUserData(id: Int) {
-        _userLiveData.value = database.getId(id)
+    fun loadUserData(id: Int) {
+        viewModelScope.launch { _userLiveData.value = database.getId(id) }
     }
 
     fun updateUserInfo(user: User) {
         database.run {
-            CoroutineScope(Dispatchers.IO).launch {
+            viewModelScope.launch {
                 update(user)
             }
         }

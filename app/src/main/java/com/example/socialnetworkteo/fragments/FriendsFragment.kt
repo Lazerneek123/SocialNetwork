@@ -1,4 +1,4 @@
-package com.example.socialnetworkteo.ui.friends
+package com.example.socialnetworkteo.fragments
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -11,23 +11,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.activities.MainActivity
 import com.example.socialnetworkteo.databinding.FragmentFriendsBinding
 import com.example.socialnetworkteo.models.User
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.socialnetworkteo.viewModel.FriendsViewModel
 
 class FriendsFragment : Fragment() {
 
     private lateinit var viewModel: FriendsViewModel
     private var binding: FragmentFriendsBinding? = null
     private var root: View? = null
-    private var idUser = 0
-    var packageName: String? = null
+    private var packageName: String? = null
 
-    @SuppressLint("CutPasteId", "InflateParams")
+
+    @SuppressLint("InflateParams")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,18 +41,11 @@ class FriendsFragment : Fragment() {
 
         viewModel.getAllUsers()
 
-        var countUsers = 0
+        viewModel.getSizeList().observe(viewLifecycleOwner, {
+            val listUserSize = it
 
-
-        lifecycleScope.launch {
-            while (countUsers == 0) {
-                countUsers = viewModel.getSizeList.value!!
-                delay(50)
-            }
-            countUsers--
-
-            for (id in 0..countUsers) {
-                viewModel.userLiveData.observe(viewLifecycleOwner, {
+            for (id in 0..listUserSize) {
+                viewModel.userLiveData().observe(viewLifecycleOwner, { it ->
                     root!!.findViewById<TextView>(
                         resources.getIdentifier(
                             "userName$id",
@@ -61,6 +53,7 @@ class FriendsFragment : Fragment() {
                             packageName
                         )
                     ).text = it[id].name
+
                     root!!.findViewById<TextView>(
                         resources.getIdentifier(
                             "userOnline$id",
@@ -90,26 +83,11 @@ class FriendsFragment : Fragment() {
                         "id",
                         packageName
                     )
-                ).setOnClickListener { openFriend(id) }
+                ).setOnClickListener {
+                    openFriend(id)
+                }
             }
-        }
-
-        lifecycleScope.launch {
-            while (true) {
-                viewModel.loadUserData(idUser)
-                viewModel.userLiveData.observe(viewLifecycleOwner, {
-                    root!!.findViewById<TextView>(
-                        resources.getIdentifier(
-                            "userName$idUser",
-                            "id",
-                            packageName
-                        )
-                    ).text = viewModel.user.value!!.name
-                })
-
-                delay(500)
-            }
-        }
+            })
 
         val textView: TextView = binding!!.textFriends
         textView.text = resources.getString(R.string.friends_fragment_inscription)
@@ -119,9 +97,9 @@ class FriendsFragment : Fragment() {
 
     private fun openFriend(friendId: Int) {
         (activity as MainActivity).openFriend(friendId)
-        idUser = friendId
-    }
+        (activity as MainActivity).recreate()
 
+    }
 
     private fun TextView.setColor(it: User) {
         if (it.online != "Online") {

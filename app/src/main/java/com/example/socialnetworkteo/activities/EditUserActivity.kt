@@ -1,22 +1,21 @@
 package com.example.socialnetworkteo.activities
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.socialnetworkteo.R
-import com.example.socialnetworkteo.models.EditUserViewModel
 import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.models.UserData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.socialnetworkteo.viewModel.EditUserViewModel
 
 class EditUserActivity : AppCompatActivity() {
     private lateinit var viewModel: EditUserViewModel
 
+    @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user)
@@ -24,7 +23,7 @@ class EditUserActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[EditUserViewModel::class.java]
 
         val id = intent.extras?.getInt("id")!!.toInt()
-        lifecycleScope.launch { viewModel.loadUserData(id) }
+        viewModel.loadUserData(id)
 
         val userData = UserData()
         val friend1Image: ImageView = findViewById(R.id.userEditImage)
@@ -53,7 +52,6 @@ class EditUserActivity : AppCompatActivity() {
             updateUserInfo()
             finish()
         }
-
     }
 
     private fun updateUserInfo() {
@@ -76,10 +74,7 @@ class EditUserActivity : AppCompatActivity() {
             newHobby,
             newDescription
         )
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.updateUserInfo(user)
-        }
+        viewModel.updateUserInfo(user)
     }
 
     private val onlineStatus = listOf(
