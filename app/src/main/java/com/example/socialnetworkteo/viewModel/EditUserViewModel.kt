@@ -10,20 +10,20 @@ import com.example.socialnetworkteo.models.User
 import kotlinx.coroutines.launch
 
 class EditUserViewModel(application: Application) : AndroidViewModel(application) {
-    private val _userLiveData = MutableLiveData<User>()
-    val userLiveData: LiveData<User> = _userLiveData
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User> = _user
 
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
     fun loadUserData(id: Int) {
-        viewModelScope.launch { _userLiveData.value = database.getId(id) }
+        viewModelScope.launch {
+            _user.value = database.getId(id)
+        }
     }
 
     fun updateUserInfo(user: User) {
-        database.run {
-            viewModelScope.launch {
-                update(user)
-            }
+        viewModelScope.launch {
+            database.update(user)
         }
     }
 }

@@ -19,12 +19,10 @@ import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.viewModel.FriendsViewModel
 
 class FriendsFragment : Fragment() {
-
     private lateinit var viewModel: FriendsViewModel
     private var binding: FragmentFriendsBinding? = null
     private var root: View? = null
     private var packageName: String? = null
-
 
     @SuppressLint("InflateParams")
     override fun onCreateView(
@@ -41,11 +39,11 @@ class FriendsFragment : Fragment() {
 
         viewModel.getAllUsers()
 
-        viewModel.getSizeList().observe(viewLifecycleOwner, {
+        viewModel.getSizeList.observe(viewLifecycleOwner, {
             val listUserSize = it
 
             for (id in 0..listUserSize) {
-                viewModel.userLiveData().observe(viewLifecycleOwner, { it ->
+                viewModel.usersList.observe(viewLifecycleOwner, {
                     root!!.findViewById<TextView>(
                         resources.getIdentifier(
                             "userName$id",
@@ -87,7 +85,7 @@ class FriendsFragment : Fragment() {
                     openFriend(id)
                 }
             }
-            })
+        })
 
         val textView: TextView = binding!!.textFriends
         textView.text = resources.getString(R.string.friends_fragment_inscription)
@@ -96,9 +94,7 @@ class FriendsFragment : Fragment() {
     }
 
     private fun openFriend(friendId: Int) {
-        (activity as MainActivity).openFriend(friendId)
-        (activity as MainActivity).recreate()
-
+        (activity as MainActivity).openFriendMainActivity(friendId)
     }
 
     private fun TextView.setColor(it: User) {
@@ -106,6 +102,24 @@ class FriendsFragment : Fragment() {
             this.setTextColor(Color.rgb(255, 0, 10))
         }
     }
+
+    /*fun updateUser() {
+        viewModel.viewModelScope.launch {
+            switch = true
+            while (switch) {
+                viewModel.user.observe(viewLifecycleOwner, {
+                    root!!.findViewById<TextView>(
+                        resources.getIdentifier(
+                            "userName${it.id}",
+                            "id",
+                            packageName
+                        )
+                    ).text = it.name
+                })
+            }
+        }
+
+    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

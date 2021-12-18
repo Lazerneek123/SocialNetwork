@@ -13,6 +13,8 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
     fun loadUserData(id: Int) {
-        viewModelScope.launch { _userLiveData.value = database.getId(id) }
+        viewModelScope.launch {
+            _userLiveData.value = database.getId(id)
+        }
     }
 }

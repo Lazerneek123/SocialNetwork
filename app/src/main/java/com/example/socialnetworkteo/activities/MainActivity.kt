@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
-    fun openFriend(friendId: Int) {
+    fun openFriendMainActivity(friendId: Int) {
         val intent = Intent(this, UserActivity::class.java)
         intent.putExtra(EXTRA_MESSAGE, friendId)
         startActivity(intent)

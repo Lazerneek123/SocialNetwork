@@ -70,7 +70,7 @@ class EditUserActivity : AppCompatActivity() {
             newUserAge,
             onlineStatus[(0..4).random()],
             newEmail,
-            viewModel.userLiveData.value!!.photo,
+            viewModel.user.value!!.photo,
             newHobby,
             newDescription
         )
