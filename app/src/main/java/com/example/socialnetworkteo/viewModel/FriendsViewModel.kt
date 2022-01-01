@@ -22,9 +22,6 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
-    private val _getSizeList = MutableLiveData<Int>()
-    val getSizeList: LiveData<Int> = _getSizeList
-
     fun getAllUsers() {
         viewModelScope.launch {
             if (database.listEmpty() == null) {
@@ -32,15 +29,7 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
                     database.insert(userOne)
                 }
             }
-
             _usersList.value = database.getAllUsers()
-            _getSizeList.value = database.getSize()!! - 1
-        }
-    }
-
-    fun loadUserData(id: Int) {
-        viewModelScope.launch {
-            _user.value = database.getId(id)
         }
     }
 }

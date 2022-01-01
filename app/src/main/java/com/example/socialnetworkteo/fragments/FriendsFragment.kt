@@ -1,21 +1,16 @@
 package com.example.socialnetworkteo.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
+import androidx.recyclerview.widget.RecyclerView
 import com.example.socialnetworkteo.R
-import com.example.socialnetworkteo.activities.MainActivity
+import com.example.socialnetworkteo.adapter.UserAdapter
 import com.example.socialnetworkteo.databinding.FragmentFriendsBinding
-import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.viewModel.FriendsViewModel
 
 class FriendsFragment : Fragment() {
@@ -39,87 +34,22 @@ class FriendsFragment : Fragment() {
 
         viewModel.getAllUsers()
 
-        viewModel.getSizeList.observe(viewLifecycleOwner, {
-            val listUserSize = it
+        val recyclerView: RecyclerView = binding!!.userListRecyclerView
+        val adapter = activity?.let { UserAdapter(it) }
+        recyclerView.adapter = adapter
 
-            for (id in 0..listUserSize) {
-                viewModel.usersList.observe(viewLifecycleOwner, {
-                    root!!.findViewById<TextView>(
-                        resources.getIdentifier(
-                            "userName$id",
-                            "id",
-                            packageName
-                        )
-                    ).text = it[id].name
-
-                    root!!.findViewById<TextView>(
-                        resources.getIdentifier(
-                            "userOnline$id",
-                            "id",
-                            packageName
-                        )
-                    ).text = it[id].online
-                    root!!.findViewById<ImageView>(
-                        resources.getIdentifier(
-                            "userImage$id",
-                            "id",
-                            packageName
-                        )
-                    ).setImageResource(it[id].photo)
-                    root!!.findViewById<TextView>(
-                        resources.getIdentifier(
-                            "userOnline$id",
-                            "id",
-                            packageName
-                        )
-                    ).setColor(it[id])
-
-                })
-                root!!.findViewById<LinearLayout>(
-                    resources.getIdentifier(
-                        "layout$id",
-                        "id",
-                        packageName
-                    )
-                ).setOnClickListener {
-                    openFriend(id)
-                }
+        viewModel = ViewModelProvider(this)[FriendsViewModel::class.java]
+        viewModel.usersList.observe(viewLifecycleOwner, {
+            it?.let {
+                adapter!!.submitList(it)
             }
         })
 
-        val textView: TextView = binding!!.textFriends
+        val textView = binding!!.textFriends
         textView.text = resources.getString(R.string.friends_fragment_inscription)
 
         return root!!
     }
-
-    private fun openFriend(friendId: Int) {
-        (activity as MainActivity).openFriendMainActivity(friendId)
-    }
-
-    private fun TextView.setColor(it: User) {
-        if (it.online != "Online") {
-            this.setTextColor(Color.rgb(255, 0, 10))
-        }
-    }
-
-    /*fun updateUser() {
-        viewModel.viewModelScope.launch {
-            switch = true
-            while (switch) {
-                viewModel.user.observe(viewLifecycleOwner, {
-                    root!!.findViewById<TextView>(
-                        resources.getIdentifier(
-                            "userName${it.id}",
-                            "id",
-                            packageName
-                        )
-                    ).text = it.name
-                })
-            }
-        }
-
-    }*/
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -1,6 +1,5 @@
 package com.example.socialnetworkteo.activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,7 +14,6 @@ class UserActivity : AppCompatActivity() {
     private lateinit var viewModel: UserViewModel
     private var id: Int = 0
 
-    @SuppressLint("SetTextI18n", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)

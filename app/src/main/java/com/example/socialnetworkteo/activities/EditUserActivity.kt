@@ -1,6 +1,5 @@
 package com.example.socialnetworkteo.activities
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -15,7 +14,6 @@ import com.example.socialnetworkteo.viewModel.EditUserViewModel
 class EditUserActivity : AppCompatActivity() {
     private lateinit var viewModel: EditUserViewModel
 
-    @SuppressLint("UseRequireInsteadOfGet")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user)
@@ -55,6 +53,7 @@ class EditUserActivity : AppCompatActivity() {
     }
 
     private fun updateUserInfo() {
+        val newUser = viewModel.user.value!!
         val newUserName = findViewById<EditText>(R.id.textEditUserName).text.toString()
         val newUserPost = findViewById<EditText>(R.id.textEditUserPost).text.toString()
         val newUserAge = findViewById<EditText>(R.id.textEditUserAge).text.toString().toInt()
@@ -68,21 +67,12 @@ class EditUserActivity : AppCompatActivity() {
             newUserName,
             newUserPost,
             newUserAge,
-            onlineStatus[(0..4).random()],
+            newUser.online,
             newEmail,
-            viewModel.user.value!!.photo,
+            newUser.photo,
             newHobby,
             newDescription
         )
         viewModel.updateUserInfo(user)
     }
-
-    private val onlineStatus = listOf(
-        (1..59).random().toString() + " min ago",
-        "Online",
-        (1..23).random().toString() + " hours ago",
-        "Yesterday",
-        (1..11).random().toString() + " month ago"
-    )
-
 }
