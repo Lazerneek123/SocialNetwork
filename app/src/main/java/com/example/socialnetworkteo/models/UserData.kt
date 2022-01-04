@@ -15,7 +15,6 @@ class UserData {
     private var _userList = MutableLiveData<List<User>>().apply {
         value = listOf(
             User(
-                0,
                 "Maks Rens",
                 "Admin",
                 34,
@@ -28,7 +27,6 @@ class UserData {
             ),
 
             User(
-                1,
                 "Sara Derby",
                 "Admin",
                 23,
@@ -42,7 +40,6 @@ class UserData {
             ),
 
             User(
-                2,
                 "Mark Twelve",
                 "User",
                 21,
@@ -57,20 +54,18 @@ class UserData {
             ),
 
             User(
-                3,
                 "Nick Tiger",
                 "User",
                 22,
                 onlineStatus[(0..4).random()],
                 "nickTiger@gmail.com",
                 R.drawable.user4,
-                "Picking up mushrooms",
+                "Picking up",
                 "There should be a description of the character! There should be a description of the character!" +
                         "There should be a description of the character! There should be a description of the character!" + "There should be a description of the character! There should be a description of the character!"
             ),
 
             User(
-                4,
                 "Lora Brown",
                 "User",
                 45,
@@ -86,7 +81,6 @@ class UserData {
             ),
 
             User(
-                5,
                 "Semi Worner",
                 "User",
                 29,
@@ -100,7 +94,6 @@ class UserData {
             ),
 
             User(
-                6,
                 "Susan Garbel",
                 "User",
                 30,

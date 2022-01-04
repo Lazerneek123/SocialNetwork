@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
@@ -76,5 +75,10 @@ class MainActivity : AppCompatActivity() {
         //recreate()
         //view.setBackgroundResource(R.drawable.icon_my)
         //findViewById<LinearLayout>(R.id.linearLayoutUserDown).setBackgroundColor(Color.rgb(11, 7, 17))
+    }
+
+    fun openAddUserActivity(view: View) {
+        val intent = Intent(this, AddUserActivity::class.java)
+        startActivity(intent)
     }
 }

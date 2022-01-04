@@ -63,7 +63,7 @@
         android:id="@+id/linearLayoutUserDown"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2.2"
+        android:layout_weight="2.4"
         android:background="@color/light"
         android:orientation="horizontal">
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SocialNetworkTeo</string>
+    <string name="app_name">Social Network Teo</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Your profile: Barmutov Roman </string>
@@ -24,7 +24,7 @@
     <string name="name_single_Item1">Edit</string>
     <string name="name_single_Item2">Update</string>
 
-    <string name="information_app">Simple app social network (v.1.12)</string>
+    <string name="information_app">Simple app social network (v.1.13)</string>
     <string name="todo1">TODO</string>
 
     <string name="prompt_email">Email</string>
@@ -42,11 +42,15 @@
 
     <string name="edit_text">Edit a friends</string>
     <string name="edit_button">Edit</string>
-    <string name="update_text">Update!</string>
+    <string name="update_text">Update</string>
+    <string name="button_save_text">SAVE</string>
 
 
     <string name="interstitial_ad_unit_id">YOUR_INTERSTITIAL_AD_UNIT_ID</string>
     <string name="title_activity_edit">EditActivity</string>
-    <string name="title_activity_edit_user">EditUserActivity</string>
+
+    <string name="title_activity_edit_user">Edit user</string>
+    <string name="title_activity_user">User view</string>
+    <string name="title_activity_add_user">Add new user</string>
     <string name="next_level">Next Level</string>
 </resources>

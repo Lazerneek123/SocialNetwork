@@ -19,9 +19,6 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
 
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
-
     fun getAllUsers() {
         viewModelScope.launch {
             if (database.listEmpty() == null) {
@@ -30,6 +27,12 @@ class FriendsViewModel(application: Application) : AndroidViewModel(application)
                 }
             }
             _usersList.value = database.getAllUsers()
+        }
+    }
+
+    fun deleteUser(user: User){
+        viewModelScope.launch {
+            database.delete(user)
         }
     }
 }

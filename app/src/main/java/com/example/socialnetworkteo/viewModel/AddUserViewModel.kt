@@ -1,20 +1,19 @@
 package com.example.socialnetworkteo.viewModel
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.socialnetworkteo.database.UserDatabase
 import com.example.socialnetworkteo.models.User
 import kotlinx.coroutines.launch
 
-class UserViewModel(application: Application) : AndroidViewModel(application) {
-    private val _user = MutableLiveData<User>()
-    val user: LiveData<User> = _user
+class AddUserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val database = UserDatabase.getInstance(application).userDatabaseDao
 
-    fun loadUserData(id: Int) {
+    fun insertUser(user: User) {
         viewModelScope.launch {
-            _user.value = database.getId(id)
+            database.insert(user)
         }
     }
 }

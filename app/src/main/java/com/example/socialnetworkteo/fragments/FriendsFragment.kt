@@ -35,7 +35,7 @@ class FriendsFragment : Fragment() {
         viewModel.getAllUsers()
 
         val recyclerView: RecyclerView = binding!!.userListRecyclerView
-        val adapter = activity?.let { UserAdapter(it) }
+        val adapter = activity?.let { UserAdapter(it, viewModel, requireContext()) }
         recyclerView.adapter = adapter
 
         viewModel = ViewModelProvider(this)[FriendsViewModel::class.java]

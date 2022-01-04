@@ -22,7 +22,7 @@ class UserActivity : AppCompatActivity() {
         id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
         viewModel.loadUserData(id)
 
-        viewModel.userLiveData.observe(this, {
+        viewModel.user.observe(this, {
             findViewById<TextView>(R.id.userName).text = it.name
             findViewById<TextView>(R.id.userPost).text = it.post
             findViewById<TextView>(R.id.userAge).text = it.age.toString()
