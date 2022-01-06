@@ -1,22 +1,22 @@
 package com.example.socialnetworkteo.activities
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.socialnetworkteo.R
 import com.example.socialnetworkteo.adapter.UserAdapter
+import com.example.socialnetworkteo.databinding.ActivityEditUserBinding
 import com.example.socialnetworkteo.models.User
 import com.example.socialnetworkteo.viewModel.EditUserViewModel
 
 class EditUserActivity : AppCompatActivity() {
     private lateinit var viewModel: EditUserViewModel
+    private lateinit var binding: ActivityEditUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_user)
+
+        binding = ActivityEditUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[EditUserViewModel::class.java]
 
@@ -24,17 +24,16 @@ class EditUserActivity : AppCompatActivity() {
         viewModel.loadUserData(id)
 
         viewModel.user.observe(this, {
-            findViewById<ImageView>(R.id.userEditImage).setImageResource(it.photo)
-            findViewById<EditText>(R.id.textEditUserName).setText(it.name)
-            findViewById<EditText>(R.id.textEditUserPost).setText(it.post)
-            findViewById<EditText>(R.id.textEditUserAge).setText(it.age.toString())
-            findViewById<EditText>(R.id.textEditUserEmail).setText(it.email)
-            findViewById<EditText>(R.id.textEditUserHobby).setText(it.hobby)
-            findViewById<EditText>(R.id.textEditUserDescription).setText(it.description)
+            binding.userEditImage.setImageResource(it.photo)
+            binding.textEditUserName.setText(it.name)
+            binding.textEditUserPost.setText(it.post)
+            binding.textEditUserAge.setText(it.age.toString())
+            binding.textEditUserEmail.setText(it.email)
+            binding.textEditUserHobby.setText(it.hobby)
+            binding.textEditUserDescription.setText(it.description)
         })
 
-        val updateButton = findViewById<Button>(R.id.buttonUpdate)
-        updateButton.setOnClickListener {
+        binding.buttonUpdate.setOnClickListener {
             updateUserInfo(id)
             UserAdapter.activityFriendsFragment!!.recreate()
             finish()
@@ -43,12 +42,12 @@ class EditUserActivity : AppCompatActivity() {
 
     private fun updateUserInfo(id: Int) {
         val newUser = viewModel.user.value!!
-        val newUserName = findViewById<EditText>(R.id.textEditUserName).text.toString()
-        val newUserPost = findViewById<EditText>(R.id.textEditUserPost).text.toString()
-        val newUserAge = findViewById<EditText>(R.id.textEditUserAge).text.toString().toInt()
-        val newEmail = findViewById<EditText>(R.id.textEditUserEmail).text.toString()
-        val newHobby = findViewById<EditText>(R.id.textEditUserHobby).text.toString()
-        val newDescription = findViewById<EditText>(R.id.textEditUserDescription).text.toString()
+        val newUserName = binding.textEditUserName.text.toString()
+        val newUserPost = binding.textEditUserPost.text.toString()
+        val newUserAge = binding.textEditUserAge.text.toString().toInt()
+        val newEmail = binding.textEditUserEmail.text.toString()
+        val newHobby = binding.textEditUserHobby.text.toString()
+        val newDescription = binding.textEditUserDescription.text.toString()
 
         val user = User(
             newUserName,

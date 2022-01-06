@@ -3,33 +3,34 @@ package com.example.socialnetworkteo.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.socialnetworkteo.R
+import com.example.socialnetworkteo.databinding.ActivityUserBinding
 import com.example.socialnetworkteo.viewModel.UserViewModel
 
 class UserActivity : AppCompatActivity() {
     private lateinit var viewModel: UserViewModel
+    private lateinit var binding: ActivityUserBinding
     private var id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user)
+
+        binding = ActivityUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[UserViewModel::class.java]
         id = intent.extras?.getInt(MainActivity.EXTRA_MESSAGE)!!
         viewModel.loadUserData(id)
 
         viewModel.user.observe(this, {
-            findViewById<TextView>(R.id.userName).text = it.name
-            findViewById<TextView>(R.id.userPost).text = it.post
-            findViewById<TextView>(R.id.userAge).text = it.age.toString()
-            findViewById<ImageView>(R.id.userImage).setImageResource(it.photo)
-            findViewById<TextView>(R.id.userTitle).text = it.hobby
-            findViewById<TextView>(R.id.userEmail).text = it.email
-            findViewById<TextView>(R.id.detailsTextAbout).text = it.description
+            binding.userName.text = it.name
+            binding.userPost.text = it.post
+            binding.userAge.text = it.age.toString()
+            binding.userImage.setImageResource(it.photo)
+            binding.userTitle.text = it.hobby
+            binding.userEmail.text = it.email
+            binding.detailsTextAbout.text = it.description
         })
     }
 
